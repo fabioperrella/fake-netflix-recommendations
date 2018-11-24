@@ -10,13 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_201428) do
+ActiveRecord::Schema.define(version: 2018_11_24_011621) do
 
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.string "preferences"
-    t.string "secondary_preferences"
-  end
+# Could not dump table "items" because of following StandardError
+#   Unknown type 'boolen' for column 'sponsored'
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
