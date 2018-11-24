@@ -1,44 +1,29 @@
 class UserRecommendations
-  def self.list(user)
-    self.send(:new, user).send(:list)
+  def self.list(user, fetchers: nil)
+    self.send(:new, user, fetchers: fetchers).send(:list)
   end
 
   private
 
-  def initialize(user)
+  def initialize(user, fetchers:)
     @user = user
+    @fetchers = fetchers || DEFAULT_FETCHERS
   end
   private_class_method :new
 
-  attr_reader :user
+  attr_reader :user, :fetchers
+
+  DEFAULT_FETCHERS = [
+    ItemsFetcher::Main,
+    ItemsFetcher::Secondary,
+    ItemsFetcher::Sponsored,
+  ]
+  private_constant :DEFAULT_FETCHERS
 
   def list
-    sponsored_items + main_items + secondary_items
-  end
-
-  def sponsored_items
-    Item.where(sponsored: true)
-  end
-
-  def main_items
-    Item.where(main_preferences)
-  end
-
-  def secondary_items
-    Item.where(secondary_preferences)
-  end
-
-  def main_preferences
-    user.preferences
-      .map { |preference| "preferences like '%#{preference}%'" }
-      .join(" OR ")
-  end
-
-  def secondary_preferences
-    user.preferences
-      .map { |preference| "secondary_preferences like '%#{preference}%'" }
-      .join(" OR ")
+    fetchers
+      .sort_by(&:order)
+      .map{ |fetcher| fetcher.fetch(user) }
+      .inject(:+)
   end
 end
-
-
