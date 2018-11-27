@@ -65,5 +65,18 @@ describe UserRecommendations do
       expect(result[0]).to eq(item_anita)
       expect(result[1..2]).to match_array([item1, item2])
     end
+
+    it 'does not recommend a watched item' do
+      # setup
+      item1 = create(:item, preferences: ['sports'])
+      item2 = create(:item, preferences: ['sports'])
+      user = create(:user, preferences: ['sports'], watched_items: [item1])
+
+      # exercise
+      result = described_class.list(user)
+
+      # verify
+      expect(result).to eq([item2])
+    end
   end
 end

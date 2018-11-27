@@ -25,5 +25,10 @@ class UserRecommendations
       .sort_by(&:order)
       .map{ |fetcher| fetcher.fetch(user) }
       .inject(:+)
+      .reject { |item| watched_items.include?(item) }
+  end
+
+  def watched_items
+    @watched_items ||= user.watched_items
   end
 end
