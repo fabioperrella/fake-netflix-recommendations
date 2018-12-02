@@ -1,7 +1,11 @@
 module ItemsFetcher
   class Sponsored
     def self.fetch(user)
-      send(:new, user).send(:fetch)
+      send(:new, user).send(:fetch).tap do |list|
+        list.each do |item|
+          SponsoredMetrics.new(item, user).save
+        end
+      end
     end
 
     def self.order

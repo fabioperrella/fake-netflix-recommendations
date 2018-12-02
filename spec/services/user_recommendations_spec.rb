@@ -48,7 +48,7 @@ describe UserRecommendations do
 
     it 'returns sponsored items in the top of the list' do
       # setup
-      user = build(:user, preferences: ['drama', 'commedy'])
+      user = build_stubbed(:user, preferences: ['drama', 'commedy'])
       item1 = create(:item, preferences: ['drama'])
       item2 = create(:item, preferences: ['commedy'])
       item_anita = create(
