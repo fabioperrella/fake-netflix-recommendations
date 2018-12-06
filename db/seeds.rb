@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'john', preferences: ['horror', 'comedy'])
-User.create(name: 'maria', preferences: ['drama', 'comedy'])
-User.create(name: 'alex', preferences: ['scifi', 'horror', 'commedy'])
+User.create(name: 'john', preferences: ['horror', 'comedy'], email: 'john@aa.com')
+User.create(name: 'maria', preferences: ['drama', 'comedy'], email: 'maria@aa.com')
+User.create(name: 'alex', preferences: ['scifi', 'horror', 'commedy'], email: 'alex@aa.com')
 
 Item.create(
   name: 'Anita',
@@ -24,4 +24,14 @@ Item.create(
   name: 'The good place',
   preferences: ['comedy'],
   secondary_preferences: ['drama']
+)
+Item.create(
+  name: 'The walking dead',
+  preferences: ['horror', 'violence', 'commedy'],
+  secondary_preferences: ['drama']
+)
+Item.create(
+  name: 'Stranger Things',
+  preferences: ['thriller', 'scifi'],
+  secondary_preferences: ['teenager']
 )
