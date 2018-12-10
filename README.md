@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Warning** This is a crazy app just to show some debugging techniques in ruby
+using `pry` and `pry-byebug`.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The presentation is in this repo https://github.com/fabioperrella/debugging-with-mastery
+and it was made to show in Ruby Conf BR 2018.
