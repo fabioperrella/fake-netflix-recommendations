@@ -25,6 +25,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem 'pry-byebug'
+  gem 'pry-doc'
   gem 'rspec-rails', '~> 3.8'
   gem 'table_print'
   gem 'factory_bot_rails'
